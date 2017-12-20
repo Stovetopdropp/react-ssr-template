@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-
+import reduxLogger from 'redux-logger';
 import rootReducer from '../reducers'
 
 const configureStore = (preloadedState) => {
@@ -9,7 +9,7 @@ const configureStore = (preloadedState) => {
     const createStoreWithMiddleware = createStore(
         rootReducer,
         preloadedState,
-        applyMiddleware(sagaMiddleware)
+        applyMiddleware(sagaMiddleware, reduxLogger)
     )
 
     if (module.hot) {
