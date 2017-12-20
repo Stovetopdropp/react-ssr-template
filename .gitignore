@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# Sublime Text project files
+*.sublime-*
+
+npm-debug.log
+.DS_Store
