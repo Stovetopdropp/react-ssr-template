@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga'
 import reduxLogger from 'redux-logger';
 import rootReducer from '../reducers'
 
-const configureStore = (preloadedState) => {
+const configureStore = (preloadedState, isServer=false) => {
     const sagaMiddleware = createSagaMiddleware()
 
     const createStoreWithMiddleware = createStore(
@@ -12,7 +12,7 @@ const configureStore = (preloadedState) => {
         applyMiddleware(sagaMiddleware, reduxLogger)
     )
 
-    if (module.hot) {
+    if (module.hot && !isServer) {
         // Enable Webpack hot module replacement for reducers
         module.hot.accept('../reducers', () => {
             store.replaceReducer(rootReducer)

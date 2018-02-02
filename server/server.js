@@ -35,7 +35,7 @@ const handleRender = (req, res) => {
         const preloadedState = { counter }
 
         // Create a new Redux store instance
-        const store = configureStore(preloadedState)
+        const store = configureStore(preloadedState, true)
 
         // Render the component to a string
         const html = renderToString(
